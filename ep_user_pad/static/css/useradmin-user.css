@@ -1,0 +1,75 @@
+
+.sort {
+  cursor: pointer;
+}
+.sort:after {
+  content: '▲▼'
+}
+.sort.up:after {
+  content:'▲'
+}
+.sort.down:after {
+  content:'▼'
+}
+
+ .black_overlay{
+     display: none;
+     position: absolute;
+     top: 0%;
+     left: 0%;
+     width: 100%;
+     height: 100%;
+     background-color: black;
+     z-index:1001;
+     -moz-opacity: 0.2;
+     opacity:.20;
+     filter: alpha(opacity=20);
+ }
+ 
+  .white_content {
+     display: none;
+     position: absolute;
+     top: 25%;
+     left: 40%;
+     bottom: 25%;
+     right:  40%;
+     background-color: white;
+     z-index:1002;
+     border: 5px solid grey;
+     border-radius: 10px;
+     font-size: 22px;
+ }
+ 
+ #GroupBox {
+ 
+ 	height: 400px;
+ }
+ 
+  .close-btn {
+   	float: right;
+	border: 5px solid grey;
+	background-color: white;
+	height: 30px;
+	width: 30px;
+	-moz-border-radius: 20px;
+	border-radius: 20px;
+	margin-top: -23px;
+	margin-right: -21px;
+	font-size: 24px;
+	font-weight: bold;
+	text-align: center;
+	color: grey;
+}
+
+.close-btn a {
+	font-size: 15px;
+	font-weight: bold;
+	color: white;
+	text-decoration: none;
+}
+.whitebox-result-div{
+	position: relative;
+	max-height: 70%;
+	width: 100%;
+	overflow: auto;
+}

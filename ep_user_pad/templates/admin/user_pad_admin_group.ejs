@@ -1,0 +1,135 @@
+<html>
+<head>
+<title>User Administration</title>
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
+<link rel="stylesheet" href="../../../static/css/admin.css">
+<script src="../../../socket.io/socket.io.js"></script>
+<script src="../../../static/js/jquery.js"></script>
+<script type="text/javascript" src="../../../static/js/require-kernel.js"></script>
+<script type="text/javascript"
+	src="../../../javascripts/lib/ep_etherpad-lite/static/js/ace2_common.js?callback=require.define"></script>
+<script type="text/javascript">
+	(function() {
+		var pathComponents = location.pathname.split('/');
+		var baseURL = pathComponents.slice(0, pathComponents.length - 4).join(
+				'/')
+				+ '/';
+		require.setRootURI(baseURL + "javascripts/src");
+		require.setLibraryURI(baseURL + "javascripts/lib");
+		require.setGlobalKeyPath("require");
+		var plugins = require('ep_etherpad-lite/static/js/pluginfw/client_plugins');
+		var hooks = require('ep_etherpad-lite/static/js/pluginfw/hooks');
+		plugins.baseURL = baseURL;
+		plugins.update(function() {
+			hooks.plugins = plugins;
+			hooks.aCallAll('documentReady', 'admin/user_pad_group');
+		});
+	}());
+</script>
+<link rel="stylesheet" href="../../../static/plugins/ep_user_pad/static/css/useradmin-group.css" type="text/css" />
+<% e.begin_block("styles"); %>
+
+<%e.end_block(); %>
+</head>
+<body>
+	<div id="wrapper">
+		<div class="menu">
+			<h1>Etherpad lite</h1>
+			<ul>
+				<% e.begin_block("adminMenu"); %>
+				<li><a href="../../plugins">Plugin manager</a></li>
+				<li><a href="../../settings">Settings</a></li>
+				<li><a href="../../plugins/info">Troubleshooting information</a></li> <%
+				e.end_block(); %>
+			</ul>
+		</div>
+
+		<div class="innerwrapper">
+			<h2>User Administration</h2>
+			<% e.begin_block("useradminmenu"); %>
+				<div class = "leftwrapper">
+					<li><a href="../../userpadadmin/groups">Groups</a></li>
+					<li><a href="../../userpadadmin/users">User</a></li>
+				</div>
+			<%e.end_block(); %>
+			<div id="UserBox" class="white_content">
+	 			<a href = "javascript:void(0)" onclick = "document.getElementById('UserBox').style.display='none'
+	 				;document.getElementById('fade').style.display='none'">
+	 				<span class="close-btn" >X
+					</span>
+	 			</a>
+	 			<div class="whitebox-result-div">
+			 		<table class="userResultTable">
+						<thead id="tableUserBoxHead">
+							<tr>
+								<th  data-label="id">ID</th>
+								<th  data-label="name">User Name</th>
+							</tr>
+						</thead>
+						<tbody class="template">
+							<tr>
+								<td class="id" data-label="id"></td>
+								<td class="name" data-label="padname"></td>
+							</tr>
+						</tbody>
+						<tbody class="results" id="resultUserLightbox">
+          				</tbody>
+					</table>
+	 			</div>
+		 	</div>	
+			<div id="fade" class="black_overlay"></div>
+			<div class = "lefttable">
+				<form name="Add Pad" id="add-pad">
+					<input type="text" placeholder="Name of new pad" id="name-of-pad">
+					<input type="button" value="Add Pad" id="addPadButton">
+					<a id="textfield-pad"></a>
+				</form>
+				<div class='pad-results-div'>
+					<table>
+						<thead>
+							<tr>
+								<th class="header" data-label="pad-id">Pad Name<a class="sort up"></a><a class="sort down"></a></th>
+								<th class="header" data-label="delete">Delete Pad</th>
+								<td></td>
+							</tr>
+						</thead>
+						<tbody class="template">
+							<tr>
+								<td class="Name" data-label="name"></td>
+								<td class="delete" data-label="suspend"><input class="deleteButton" type="button" value="Delete"></td>
+							</tr>
+						</tbody><tbody class='pad-results'></tbody>
+					</table>
+				</div>
+			</div>	
+			<div class = "righttable">
+				<form name="Add User" id="add-user">
+					<input type="button" value="Add User" id="addUserButton">
+					<a id="textfield-user"></a>
+				</form>
+				<div class='user-results-div'>
+					<table>
+						<thead>
+							<tr>
+								<th class="header" data-label="user-id">ID<a class="sort up"></a><a class="sort down"></a></th>
+								<th class="header" data-label="user-name">User Name<a class="sort up"></a><a class="sort down"></a></th>
+								<th class="header" data-label="suspend">Suspend User</th>
+								<td></td>
+							</tr>
+						</thead>
+						<tbody class="template">
+							<tr>
+								<td class="ID" data-label="Id"></td>
+								<td class="Name" data-label="name"></td>
+								<td class="delete" data-label="suspend"><input class="suspendButton" type="button" value="Suspend"></td>
+							</tr>
+						</tbody>
+						<tbody class='user-results'></tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+</body>
+
+</html>

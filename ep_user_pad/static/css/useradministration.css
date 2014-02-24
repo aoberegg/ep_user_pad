@@ -1,0 +1,52 @@
+div.leftwrapper {
+  background: none repeat scroll 0px 0px #FFFFFF;
+  box-shadow: 0px 1px 10px rgba(0, 0, 0, 0.2);
+  margin-right: 20px;
+  padding: 15px;
+  max-width: 150px;
+
+  height:100%;
+  float: left;
+  border-right: 1px solid #ccc;
+  max-height: 70px;
+}
+
+div.leftwrapper li {
+  list-style: none;
+  margin-left: 3px;
+  line-height: 3;
+  border-top: 1px solid #ccc;
+}
+
+div.rightwrapper {
+	position: float;
+	width: 85%;
+	
+	
+}
+.sort {
+  cursor: pointer;
+}
+.sort:after {
+  content: '▲▼'
+}
+.sort.up:after {
+  content:'▲'
+}
+.sort.down:after {
+  content:'▼'
+}
+
+input[type="password"] {
+  border-radius: 3px;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  padding: 10px;
+  *padding: 0;
+ /* IE7 hack */
+  width: 100%;
+  outline: none;
+  border: 1px solid #ddd;
+  margin: 0 0 5px 0;
+  max-width: 500px;
+}

@@ -1,0 +1,102 @@
+<html>
+<head>
+<title>User Administration</title>
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
+<link rel="stylesheet" href="../../static/css/admin.css">
+<script src="../../socket.io/socket.io.js"></script>
+<script src="../../static/js/jquery.js"></script>
+<script type="text/javascript" src="../../static/js/require-kernel.js"></script>
+<script type="text/javascript"
+	src="../../javascripts/lib/ep_etherpad-lite/static/js/ace2_common.js?callback=require.define"></script>
+<script type="text/javascript">
+	(function() {
+		var pathComponents = location.pathname.split('/');
+		var baseURL = pathComponents.slice(0, pathComponents.length - 3).join(
+				'/')
+				+ '/';
+		require.setRootURI(baseURL + "javascripts/src");
+		require.setLibraryURI(baseURL + "javascripts/lib");
+		require.setGlobalKeyPath("require");
+		var plugins = require('ep_etherpad-lite/static/js/pluginfw/client_plugins');
+		var hooks = require('ep_etherpad-lite/static/js/pluginfw/hooks');
+		plugins.baseURL = baseURL;
+		plugins.update(function() {
+			hooks.plugins = plugins;
+			hooks.aCallAll('documentReady', 'admin/user_pad_users');
+		});
+	}());
+</script>
+<link rel="stylesheet" href="../../static/plugins/ep_user_pad/static/css/useradministration.css" type="text/css" />
+<% e.begin_block("styles"); %>
+
+<%e.end_block(); %>
+</head>
+<body>
+	<div id="wrapper">
+		<div class="menu">
+			<h1>Etherpad lite</h1>
+			<ul>
+				<% e.begin_block("adminMenu"); %>
+				<li><a href="../plugins">Plugin manager</a></li>
+				<li><a href="../settings">Settings</a></li>
+				<li><a href="../plugins/info">Troubleshooting information</a></li> <%
+				e.end_block(); %>
+			</ul>
+		</div>
+
+		<div class="innerwrapper">
+		
+			<h2>User Administration</h2>
+			<% e.begin_block("useradminmenu"); %>
+				<div class = "leftwrapper">
+					<li><a href="../userpadadmin/groups">Groups</a></li>
+					<li><a href="../userpadadmin/users">User</a></li>
+				</div>
+			<%e.end_block(); %>
+			<div>
+			<form name="Add Group" id="add-user">
+				<input type="text" placeholder="E-Mail of new user" id="name-of-user">
+				<input type="password" placeholder="PW of new user" id="pw-of-user">
+				<input type="button" value="Add User" id="addUserButton">
+				<a id="textfield-user"></a>
+			</form>
+			</div>
+			<div class = "rightwrapper">
+				<div class='user-results-div'>
+				<table>
+					<thead>
+						<tr>
+							<th class="header" data-label="Id">ID<a class="sort up"></a><a class="sort down"></a></th>
+							<th class="header" data-label="user-name">User Name<a class="sort up"></a><a class="sort down"></a></th>
+							<th class="header" data-label="#groups">#Groups<a class="sort up"></a><a class="sort down"></a></th>
+							<th class="header" data-label="delete">Delete</th>
+							<th class="header" data-label="newpw">Send New PW</th>
+							<th class="header" data-label=""></th>
+							<th class="header" data-label="active">Active</th>
+							<td></td>
+						</tr>
+					</thead>
+					<tbody class="template">
+						<tr>
+							<td class="ID" data-label="Id"></td>
+							<td class="Name" data-label="name"></td>
+							<td class="Groups" data-label="groups"></td>
+							<td class="delete" data-label="Delete"><input class="deleteButton" type="button" value="Delete"></td>
+							<td class="newpw" data-label="NewPW"><input class="newPWButton" type="button" value="Send"></td>
+							<td class="success"></td>
+							<td class="setActive" data-label="Activation"><input class="setActiveBtn" type="button" value="Active"></td>
+						</tr>
+					</tbody>
+					<tbody class='user-results'>
+						
+					</tbody>
+				</table>
+			</div>
+		</div>
+
+		</div>
+	</div>
+</body>
+
+</html>
