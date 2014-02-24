@@ -1,0 +1,7 @@
+*~
+*.patch
+npm-debug.log
+*.DS_Store
+.ep_initialized
+*.crt
+*.key
