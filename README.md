@@ -8,8 +8,6 @@ This is the admin tool for the ep_user_pad_frontend plugin for etherpad-lite. Pl
 The frontend plugin for the user-management system can be found at
 
 https://github.com/aoberegg/ep_user_pad_frontend/
-
-
 <h1>IMPORTANT NOTE: currently not maintained</h1>
 
 This plugin is currently NOT maintained (apart from smaller bug fixes)! Nevertheless: You are welcome to use the plugin. If you find bugs it would be nice if you can provide pull requests.
