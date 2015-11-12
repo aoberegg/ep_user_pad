@@ -15,8 +15,8 @@ https://github.com/aoberegg/ep_user_pad_frontend/
 This plugin is currently NOT maintained (apart from smaller bug fixes)! Nevertheless: You are welcome to use the plugin. If you find bugs it would be nice if you can provide pull requests.
 
 Known alternatives to this plugin:
-<ol>
+<ul>
   <li>https://github.com/framasoft/ep_mypads</li>
   <li>https://github.com/vltugraz/ep_user_pads</li>
   <li>https://github.com/reality/ep_frontend_community</li>
-</ol>
+</ul>
