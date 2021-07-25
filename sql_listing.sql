@@ -26,7 +26,7 @@ CREATE TABLE IF NOT EXISTS `User` (
 	`salt` varchar(255) COLLATE utf8_bin DEFAULT NULL,
 	`active` int(1) DEFAULT NULL,
 	PRIMARY KEY (`userID`,`name`)
-	)
+	);
 
 CREATE TABLE IF NOT EXISTS `UserGroup` (
 	`userID` int(11) NOT NULL DEFAULT '0',
